@@ -19,6 +19,7 @@ export const createUserController=async(req,res)=>{
 
         res.status(201).json({ user, token });
     } catch (error) {
+        console.log("into error block");
         res.status(400).send(error.message);
     }
 }

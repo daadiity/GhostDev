@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import connect from './db/db.js';
 import userRoutes from './routes/user.routes.js'
 import cookieParser from 'cookie-parser';
+import projectRoutes from './routes/project.routes.js';
 import cors from 'cors';
 connect ();
 const app=express();
@@ -12,9 +13,11 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 //console.log('qqqqq')
+
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 app.use('/users',userRoutes);
+app.use('/projects',projectRoutes);
 app.get('/',(req,res)=>{
     res.send('Hello world');
 });
